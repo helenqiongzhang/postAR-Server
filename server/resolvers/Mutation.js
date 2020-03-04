@@ -33,10 +33,10 @@ async function login(parent, args, context, info) {
   };
 }
 
-function post(parent, args, context, info) {
-  console.log('entered')
+function createPost(parent, args, context, info) {
+  console.log('entered');
   const userId = getUserId(context);
-  console.log('entered----------srgs', args)
+  console.log('entered----------srgs', args);
 
   // post(xDistance: Float!, yDistance: Float!, zDistance: Float!, privacy: Boolean!, description: String!height: Float! width: Float!): Post!
   return context.prisma.createPost({
@@ -124,7 +124,7 @@ function deleteComment(parent, args, context, info) {
 module.exports = {
   signup,
   login,
-  post,
+  createPost,
   comment,
   addMarker,
   editPost,

@@ -3,10 +3,11 @@ scalar DateTime
 type Query {
   feed: [Post!]!
   post(id: ID!): Post!
+  allMarkers: [Marker!]!
 }
 
 type Mutation {
-  post(
+  createPost(
     xDistance: Float!
     yDistance: Float!
     zDistance: Float!
@@ -17,13 +18,18 @@ type Mutation {
     height: Float!
     width: Float!
   ): Post!
+
   editPost(id: ID!, description: String!): Post!
+
   deletePost(id: ID!): Post
+
   signup(email: String!, password: String!, name: String!): AuthPayload
   login(email: String!, password: String!): AuthPayload
+
   comment(postId: ID!, text: String!): Comment!
   editComment(id: ID!, text: String!): Comment!
   deleteComment(id: ID!): Comment
+
   addMarker(
     description: String!
     imageUrl: String!
@@ -79,6 +85,7 @@ type User {
 type Subscription {
   newPost: Post
   newComment: Comment
+  newMarker: Marker
 }
 
 type Comment {
